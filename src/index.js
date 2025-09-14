@@ -13,20 +13,22 @@ const serve = http.createServer(async (req, res) => {
         break;
       }
 
-      case "/styles/site.css": {
+      case "/styles/site.css": {   // ✅ correct route
         const siteCss = await fs.readFile('./src/styles/site.css', { encoding: 'utf-8' });
         res.writeHead(200, { 'Content-Type': 'text/css' });
         res.write(siteCss);
         break;
       }
-      case "/cats/add-breed":{
-        const addBreedHTML = await fs.readFile('./src/views/addBreed.html', {encoding: 'utf-8'});
+
+      case "/cats/add-breed": {
+        const addBreedHTML = await fs.readFile('./src/views/addBreed.html', { encoding: 'utf-8' });
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.write(addBreedHTML);
         break;
       }
-       case "/cats/add-cat":{
-        const addCatHTML = await fs.readFile('./src/views/addCat.html', {encoding: 'utf-8'});
+
+      case "/cats/add-cat": {
+        const addCatHTML = await fs.readFile('./src/views/addCat.html', { encoding: 'utf-8' });
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.write(addCatHTML);
         break;
