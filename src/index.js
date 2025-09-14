@@ -13,7 +13,7 @@ const serve = http.createServer(async (req, res) => {
         break;
       }
 
-      case "/styles/site.css": {   // ✅ correct route
+      case "/styles/site.css": {  
         const siteCss = await fs.readFile('./src/styles/site.css', { encoding: 'utf-8' });
         res.writeHead(200, { 'Content-Type': 'text/css' });
         res.write(siteCss);
