@@ -6,6 +6,21 @@ const port = 1337;
 
 const serve = http.createServer(async (req, res) => {
   try {
+    if(req.method === "POST"){
+
+      let data = '';
+      req.on('data', chunk =>{
+        data += chunk.toString();
+      });
+
+      req.on('end', () =>{
+        const searchParams = new URLSearchParams(data);
+
+        const newCat = Object.fromEntries(searchParams.entries());
+
+        cats.push(newCat);
+      })
+    }
     switch (req.url) {
       case "/": {
         const homeHTML = await homeView();
